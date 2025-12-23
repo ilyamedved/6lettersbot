@@ -8,7 +8,6 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.state import default_state, State, StatesGroup
-from PIL import Image , ImageDraw, ImageFont
 import random
 
 def getword(numbr):
@@ -107,7 +106,8 @@ async def echo_message(message: types.Message, state: FSMContext):
     await state.update_data(word = getword(random.randint(10, 65627)))
     await state.update_data(tr = 1) # номер попытки текущей.
     await state.update_data(usedlt = []) # использованные буковки.
-    await state.update_data(pict_path = r'C:\Users\ilya_\Desktop\nonogram\matrix_rus')
+    #await state.update_data(pict_path = r'C:\Users\ilya_\Desktop\nonogram\matrix_rus')
+    await state.update_data(pict_path = 'matrix_rus')
     #user_data = await state.get_data()
     #await message.answer(text=f"Вы выбрали {user_data['lang']}.")
     #print(await state.get_data())
