@@ -9,6 +9,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.state import default_state, State, StatesGroup
 import random
+import os
+from dotenv import load_dotenv
 
 def getword(numbr):
     fin = open("words-russian-nouns.sql","r", encoding="UTF-8")
@@ -24,7 +26,19 @@ def getword(numbr):
     fin.close
     return rt
 
-BOT_TOKEN = "8439242108:AAFeMbPDLm_8cTlRRk8qoPFbkikOEmIsjDM"
+dotenv_path = os.path.join(os.path.dirname(__file__), '6lettersbot.env')
+print("this is dotenv_path=",dotenv_path)
+if os.path.exists(dotenv_path):
+    print("path is found")
+    load_dotenv(dotenv_path)
+else:
+    print("path is not found :-(")
+
+BT = os.getenv('BOT_TOKEN')
+#print("this is BT=",BT)
+#BT = os.environ.get('BOT_TOKEN')
+#print("this is 2nd try BT=",BT)
+#BOT_TOKEN = "8439242108:AAFeMbPDLm_8cTlRRk8qoPFbkikOEmIsjDM"
 class play(StatesGroup):
     lang = State()
     in_game = State()
@@ -33,7 +47,7 @@ class play(StatesGroup):
 storage = MemoryStorage()
 
 # Инициализация
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(token=BT)
 dp = Dispatcher(storage=storage)
 # Создание клавиатуры
 def get_rus_keyboard():

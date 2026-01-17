@@ -1,5 +1,3 @@
-Pillow
-aiogram
-asyncio
-logging
 random
+aiogram==3.19.0
+pillow==12.0.0
