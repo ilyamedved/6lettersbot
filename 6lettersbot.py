@@ -28,12 +28,7 @@ def getword(numbr):
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '6lettersbot.env')
 #print("this is dotenv_path=",dotenv_path)
-if os.path.exists(dotenv_path):
-    #print("path is found")
-    load_dotenv(dotenv_path)
-else:
-    #print("path is not found :-(")
-
+load_dotenv(dotenv_path)
 BT = os.getenv('BOT_TOKEN')
 
 class play(StatesGroup):
